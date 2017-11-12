@@ -4,7 +4,7 @@
  *   @email  toto6321@qq.com
  */
 module.exports.homelist = function(request, response, next){
-    response.render('index', {
+    response.render('locations-list', {
         title: 'homelist'
     })
 }
