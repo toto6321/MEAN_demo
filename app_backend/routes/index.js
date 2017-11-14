@@ -10,6 +10,7 @@ router.get('/',locationController.homelist)
 router.get('/location',locationController.locationInfo)
 router.get('/location/review/new',locationController.addReview)
 
+router.get('/about/',othersController.about);
 
 
 

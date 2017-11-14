@@ -5,7 +5,7 @@
  */
 
 module.exports.about=(request,response,next)=>{
-    response.render('index',{
+    response.render('generic-text',{
         title:'about'
     })
 }
