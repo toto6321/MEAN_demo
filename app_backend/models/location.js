@@ -24,7 +24,9 @@ const locationSchema = new mongoose.Schema({
 	rating: {type: Number, "default": 3, min: 0, max: 5},
 	facilities: [String],
 	coordinate: {type: [coordinateSchema], index: "2Dsphere"}, // longitude is followed by latitude
-	OpeningTimes: [OpeningTimeSchema]
+		OpeningTimes: [OpeningTimeSchema]
 });
+
+mongoose.model('Location',locationSchema,'Locations');
 
 module.exports = locationSchema;

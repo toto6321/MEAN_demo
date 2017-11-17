@@ -14,4 +14,5 @@ const userSchema = new mongoose.Schema({
 	pwd: {type: String, required: true},
 });
 
+mongoose.model('User', userSchema, 'Users');
 module.exports = userSchema;

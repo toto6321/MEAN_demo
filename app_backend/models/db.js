@@ -5,7 +5,7 @@
  */
 
 let mongoose = require('mongoose');
-const mongoURL = 'mongodb://localhost/Loc8r';
+const mongoURL = 'mongodb://localhost/loc8r';
 mongoose.connect(mongoURL);
 
 
