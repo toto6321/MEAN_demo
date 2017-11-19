@@ -40,7 +40,6 @@ module.exports.locationsCreate = (req, res) => {
 	}
 
 	// to avoid inserting duplicate document
-	// todo but it doesn't work
 	Location
 		.find({name: name})
 		.exec((error, locations) => {
