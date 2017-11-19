@@ -2,6 +2,7 @@
  *   @author toto
  *   @createdDate    2017-11-15 01:49 AM
  *   @email  toto6321@qq.com
+ *   @exports Location Model
  */
 
 const mongoose = require('mongoose');
@@ -23,10 +24,8 @@ const locationSchema = new mongoose.Schema({
 	address: {type: String},
 	rating: {type: Number, "default": 3, min: 0, max: 5},
 	facilities: [String],
-	coordinate: {type: [coordinateSchema], index: "2Dsphere"}, // longitude is followed by latitude
-		OpeningTimes: [OpeningTimeSchema]
-});
+	coordinate: {type: coordinateSchema, index: "2Dsphere"},
+	openingTimes: [OpeningTimeSchema]
+	});
 
-mongoose.model('Location',locationSchema,'Locations');
-
-module.exports = locationSchema;
+module.exports = mongoose.model('Location',locationSchema,'locations');

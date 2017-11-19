@@ -2,6 +2,8 @@
  *   @author toto
  *   @createdDate    2017-11-15 02:31 AM
  *   @email  toto6321@qq.com
+ *
+ *   @exports User Model
  */
 
 const mongoose = require('mongoose');
@@ -14,5 +16,6 @@ const userSchema = new mongoose.Schema({
 	pwd: {type: String, required: true},
 });
 
-mongoose.model('User', userSchema, 'Users');
-module.exports = userSchema;
+const User = mongoose.model('User', userSchema, 'users');
+
+module.exports = User;

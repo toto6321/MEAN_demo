@@ -4,9 +4,14 @@
  *   @email  toto6321@qq.com
  */
 
+require('./location');
+require('./review');
+require('./user');
+
 let mongoose = require('mongoose');
-const mongoURL = 'mongodb://localhost/loc8r';
-mongoose.connect(mongoURL);
+const mongoURL = 'mongodb://localhost/myLoc8r';
+mongoose.Promise=global.Promise;
+mongoose.connect(mongoURL,{useMongoClient:true});
 
 
 // connection event listeners
@@ -14,7 +19,7 @@ const connection_connected = () => {
 	console.log("connection is connected");
 };
 const connection_error = () => {
-	console.log("connection is stoped with error");
+	console.log("connection is stopped with error");
 };
 const connection_disconnected = () => {
 	console.log("connection is disconnected");
