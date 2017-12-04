@@ -6,7 +6,6 @@
 
 const Location = require('../models/location');
 
-
 module.exports.locationsFindAll = (req, res, next) => {
 	Location
 		.find({})

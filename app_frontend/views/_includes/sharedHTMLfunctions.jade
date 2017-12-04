@@ -3,3 +3,14 @@ mixin outputRating(rating)
     span.glyphicon.glyphicon-star
   - for (i = rating; i < 5; i++)
     span.glyphicon.glyphicon-star-empty
+
+
+mixin getWeekdayName(dayOfWeek)
+  case dayOfWeek
+    when 0: span Monday
+    when 1: span Tuesday
+    when 2: span Wednesday
+    when 3: span Thursday
+    when 4: span Friday
+    when 5: span Saturday
+    when 6: span Sunday
