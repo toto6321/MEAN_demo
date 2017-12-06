@@ -9,6 +9,7 @@ const Location = require('../models/location');
 module.exports.locationsFindAll = (req, res, next) => {
 	Location
 		.find({})
+		.select('_id name address coordinate openingTimes facilities rating')
 		.exec((err, locations) => {
 			if (err) {
 				res.status(400).send()
