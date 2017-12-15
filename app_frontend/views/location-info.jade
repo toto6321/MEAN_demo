@@ -21,8 +21,8 @@ block content
                   li
                     +getWeekdayName(time.dayOfWeek)
                     if time.isOpen
-                      span.startedTime=time.startedTime/60
-                      span.endedTime=time.endedTime/60
+                      span.startedTime=time.startedTime / 60
+                      span.endedTime=time.endedTime / 60
                     else
                       span.closed close
                 //p
@@ -53,6 +53,17 @@ block content
               a.btn.btn-default.pull-right(href="/location/review/new") Add review
               h2.panel-title Customer reviews
             .panel-body.review-container
+              each review in reviews
+                .row
+                  .review
+                    .well.well-sm.review-header
+                      span.rating
+                        +outputRating(review.rating)
+                      span.reviewAuthor #{review.author}
+                      span.reviewCreateDate #{review.createDate}
+                    .col-xs-12
+                      p #{review.content}
+                      //p !{(review.content).replace(/\n/g, '<br/>')}
     //          each review in location.reviews
     //            .row
     //              .review
@@ -63,6 +74,7 @@ block content
     //                  small.reviewTimestamp #{review.timestamp}
     //                .col-xs-12
     //                  p !{(review.reviewText).replace(/\n/g, '<br/>')}
+
     .col-xs-12.col-md-3
       p.lead #{location.name} #{sidebar.context}
       p= sidebar.callToAction

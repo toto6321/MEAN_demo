@@ -38,7 +38,7 @@ module.exports.reviewsReadManyByLocationId = (req, res) => {
 	if (req.params && req.params.locationId) {
 		console.log(req.params.locationId)
 		Review
-			.find({locationId: new Mongoose.Schema.ObjectId(req.params.locationId)})
+			.find({locationId: req.params.locationId})
 			.exec((err, reviews) => {
 				err ?
 					res.status(400).send({msg: err})
@@ -54,7 +54,7 @@ module.exports.reviewsReadManyByUserId = (req, res) => {
 	if (req.params && req.params.uid) {
 		console.log(req.params.uid)
 		Review
-			.find({authorId: new Mongoose.Schema.ObjectId(req.params.locationId)})
+			.find({authorId: req.params.locationId})
 			.exec((err, reviews) => {
 				err ?
 					res.status(400).send({msg: err})

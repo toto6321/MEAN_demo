@@ -35,59 +35,36 @@ module.exports.homelist = function (request, response, next) {
 
 module.exports.locationInfo = (request, response, next) => {
 	let requestOption = {
-		url: options.url + 'locations/' + '5a0e8f469b7942d3ae597d88',
+		url: options.url + '/locations/' + '5a0e8f469b7942d3ae597d88',
 		method: 'get',
 		json: null,
 		qs: null,
 	}
+	//to get a location's information
 	Request(requestOption, (err, res, body) => {
 		// console.log(body)
-		const data = JSON.parse(body)
-		response.render('location-info', {
-			title: data.name,
-			pageHeader: {
-				title: data.name
-			},
-			sidebar: {
-				context: 'is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
-				callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like you.'
-			},
-			/*location: {
-				name: 'Starcups',
-				address: '125 High Street, Reading, RG6 1PS',
-				rating: 3,
-				facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-				coords: {
-					lat: 51.455041,
-					lng: -0.9690884
+		const location = JSON.parse(body)
+
+		// to get all reviews about the location
+		Request({
+			url: requestOption.url + '/reviews',
+			method: 'get'
+		}, (err1, res1, body1) => {
+			let reviews;
+			err ? reviews = []
+				: reviews = JSON.parse(body1)
+			response.render('location-info', {
+				title: location.name,
+				pageHeader: {
+					title: location.name
 				},
-				openingTimes: [{
-					days: 'Monday - Friday',
-					opening: '7:00am',
-					closing: '7:00pm',
-					closed: false
-				}, {
-					days: 'Saturday',
-					opening: '8:00am',
-					closing: '5:00pm',
-					closed: false
-				}, {
-					days: 'Sunday',
-					closed: true
-				}],
-				reviews: [{
-					author: 'Simon Holmes',
-					rating: 5,
-					timestamp: '16 July 2013',
-					reviewText: 'What a great place. I can\'t say enough good things about it.'
-				}, {
-					author: 'Charlie Chaplin',
-					rating: 3,
-					timestamp: '16 June 2013',
-					reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
-				}]
-			}*/
-			location: data
+				sidebar: {
+					context: 'is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
+					callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like you.'
+				},
+				location: location,
+				reviews: reviews
+			})
 		})
 	})
 
