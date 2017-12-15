@@ -2,16 +2,18 @@ var express = require('express');
 var router = express.Router();
 // const indexController = require('../controllers/index');
 const locationController = require('../controllers/location')
+const reviewController = require('../controllers/review')
 const othersController = require('../controllers/others')
 
 /* GET home page. */
 // router.get('/', indexController.index);
-router.get('/',locationController.homelist)
-router.get('/location',locationController.locationInfo)
-router.get('/location/review/new',locationController.addReview)
+router.get('/', locationController.homelist)
+router.get('/location/:locationId', locationController.locationInfo)
+router.get('/location/:locationId/review/new', locationController.getAddReview)
 
-router.get('/about/',othersController.about);
+router.get('/about/', othersController.about);
 
-
+// to add a piece of review for a location
+router.post('/location/:locationId/review/new', reviewController.addReview)
 
 module.exports = router;

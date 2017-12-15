@@ -9,9 +9,7 @@ const options = require('../config/config')
 module.exports.homelist = function (request, response, next) {
 	let requestOption = {
 		url: options.url + '/locations',
-		method: 'get',
-		json: null,
-		qs: null,
+		method: 'get'
 	};
 	Request(requestOption, (err, res, body) => {
 		if (err) {
@@ -33,15 +31,16 @@ module.exports.homelist = function (request, response, next) {
 	});
 };
 
-module.exports.locationInfo = (request, response, next) => {
+module.exports.locationInfo = (req, res, next) => {
+	const {locationId} = req.params
 	let requestOption = {
-		url: options.url + '/locations/' + '5a0e8f469b7942d3ae597d88',
+		url: options.url + '/locations/' + locationId,
 		method: 'get',
 		json: null,
 		qs: null,
 	}
 	//to get a location's information
-	Request(requestOption, (err, res, body) => {
+	Request(requestOption, (err1, res1, body) => {
 		// console.log(body)
 		const location = JSON.parse(body)
 
@@ -49,11 +48,11 @@ module.exports.locationInfo = (request, response, next) => {
 		Request({
 			url: requestOption.url + '/reviews',
 			method: 'get'
-		}, (err1, res1, body1) => {
+		}, (err2, res2, body2) => {
 			let reviews;
-			err ? reviews = []
-				: reviews = JSON.parse(body1)
-			response.render('location-info', {
+			err2 ? reviews = []
+				: reviews = JSON.parse(body2)
+			res.render('location-info', {
 				title: location.name,
 				pageHeader: {
 					title: location.name
@@ -70,8 +69,11 @@ module.exports.locationInfo = (request, response, next) => {
 
 }
 
-module.exports.addReview = (request, response, next) => {
-	response.render('location-review', {
-		title: 'addReview'
+module.exports.getAddReview = (req, res, next) => {
+	const locationId = req.params.locationId
+	res.render('location-review', {
+		title: 'addReview',
+		locationId: locationId
 	})
 }
+

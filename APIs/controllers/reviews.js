@@ -7,7 +7,24 @@ const Mongoose = require('mongoose')
 const Review = require('../models/review')
 
 module.exports.reviewsCreateOne = (req, res) => {
-	res.status(200).send()
+	const {authorId, locationId, rating, content} = req.body
+	const newReveiw = {
+		locationId: locationId,
+		authorId: authorId,
+		rating: rating,
+		content: content
+	}
+	console.log('new Review: ', newReveiw)
+	Review
+		.create(newReveiw, (err, review) => {
+			if (err) {
+				res.status(400).send({msg: 'failed to save the new review'})
+			} else {
+				res.status(200).send(review)
+			}
+		})
+
+	// res.status(200).send()
 };
 
 module.exports.reviewsReadMany = (req, res) => {
