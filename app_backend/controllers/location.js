@@ -8,7 +8,7 @@ const options = require('../config/config')
 
 module.exports.homelist = function (request, response, next) {
 	let requestOption = {
-		url: options.url + 'locations/',
+		url: options.url + '/locations',
 		method: 'get',
 		json: null,
 		qs: null,
