@@ -25,6 +25,7 @@ module.exports.reviewsReadOneById = (req, res) => {
 	if (req.params && req.params.reviewId) {
 		Review
 			.find({_id: req.params.reviewId})
+			.populate('locationId authorId')
 			.exec((err, review) => {
 				err ?
 					res.status(400).send({msg: err})
@@ -39,6 +40,7 @@ module.exports.reviewsReadManyByLocationId = (req, res) => {
 		console.log(req.params.locationId)
 		Review
 			.find({locationId: req.params.locationId})
+			.populate('locationId authorId')
 			.exec((err, reviews) => {
 				err ?
 					res.status(400).send({msg: err})

@@ -1,8 +1,8 @@
 mixin outputRating(rating)
   - for (var i = 1; i <= rating; i++)
-    span.glyphicon.glyphicon-star
+  span.glyphicon.glyphicon-star
   - for (i = rating; i < 5; i++)
-    span.glyphicon.glyphicon-star-empty
+  span.glyphicon.glyphicon-star-empty
 
 
 mixin getWeekdayName(dayOfWeek)
@@ -14,3 +14,10 @@ mixin getWeekdayName(dayOfWeek)
     when 4: span Friday
     when 5: span Saturday
     when 6: span Sunday
+
+
+mixin formatDateToHumanReadableString(dateString)
+  - let date = new Date(dateString)
+  - let humanReadableString = date.getFullYear()+'/'+date.getMonth()+'/'+date.getDay()
+  - humanReadableString = humanReadableString +' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()
+  =humanReadableString

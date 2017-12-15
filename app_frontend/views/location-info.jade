@@ -59,8 +59,9 @@ block content
                     .well.well-sm.review-header
                       span.rating
                         +outputRating(review.rating)
-                      span.reviewAuthor #{review.author}
-                      span.reviewCreateDate #{review.createDate}
+                      span.reviewAuthor #{review.authorId.name}
+                      span.reviewCreateDate
+                        +formatDateToHumanReadableString(review.createdDate)
                     .col-xs-12
                       p #{review.content}
                       //p !{(review.content).replace(/\n/g, '<br/>')}
