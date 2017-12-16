@@ -8,7 +8,7 @@ const othersController = require('../controllers/others')
 /* GET home page. */
 // router.get('/', indexController.index);
 router.get('/', locationController.homelist)
-router.get('/location/:locationId', locationController.locationInfo)
+router.get('/location/:locationId', locationController.getLocationInfo)
 router.get('/location/:locationId/review/new', locationController.getAddReview)
 
 router.get('/about/', othersController.about);
@@ -17,3 +17,4 @@ router.get('/about/', othersController.about);
 router.post('/location/:locationId/review/new', reviewController.addReview)
 
 module.exports = router;
+

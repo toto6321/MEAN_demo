@@ -30,6 +30,7 @@ module.exports.homelist = function (request, response, next) {
 		}
 	});
 };
+/*
 
 module.exports.locationInfo = (req, res, next) => {
 	const {locationId} = req.params
@@ -68,6 +69,21 @@ module.exports.locationInfo = (req, res, next) => {
 	})
 
 }
+*/
+
+module.exports.getLocationInfo = (req, res) => {
+	res.render('location-info', {
+		title: location.name,
+		pageHeader: {
+			title: location.name
+		},
+		sidebar: {
+			context: 'is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
+			callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like you.'
+		},
+	})
+}
+
 
 module.exports.getAddReview = (req, res, next) => {
 	const locationId = req.params.locationId
