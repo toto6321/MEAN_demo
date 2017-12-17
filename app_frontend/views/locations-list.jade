@@ -13,6 +13,7 @@ block content
       .col-xs-12.col-sm-8
         label(for='locationFilter')
         input#locationFilter(type='text' name='locationFilter' ng-model='locationFilter')
+        .message {{message}}
       .row.list-group
         .col-xs-12.list-group-item(ng-repeat='location in data.locations | filter:locationFilter')
           h4
