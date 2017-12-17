@@ -10,8 +10,11 @@ block content
         small &nbsp;#{pageHeader.strapline}
   .row(ng-controller='myController')
     .col-xs-12.col-sm-8
+      .col-xs-12.col-sm-8
+        label(for='locationFilter')
+        input#locationFilter(type='text' name='locationFilter' ng-model='locationFilter')
       .row.list-group
-        .col-xs-12.list-group-item(ng-repeat='location in data.locations')
+        .col-xs-12.list-group-item(ng-repeat='location in data.locations | filter:locationFilter')
           h4
             a(href="/location/{{location._id}}") {{location.name}}
             small(rating-star,rating='location.rating')
