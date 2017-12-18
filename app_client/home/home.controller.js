@@ -4,6 +4,13 @@
  *   @email  toto6321@qq.com
  */
 
+// controller myController
+/**
+ *
+ * @param $scope  locations array obtaining from database will be stored in $scope.vm.data.locations
+ * @param getLocations  service getLocations is to get locations from database
+ * @param getCurrentLocation  service getCurrentLocation is to user's location from the browser
+ */
 const homeController = function ($scope, getAllLocations, getCurrentLocation) {
   const vm = this
   vm.pageHeader = {
@@ -14,8 +21,9 @@ const homeController = function ($scope, getAllLocations, getCurrentLocation) {
     content: "Looking for wifi and a seat"
   };
 
-  vm.message = 'searching'
+
   // to get location list
+  vm.message = 'searching'
   getAllLocations
     .then(function (res) {
       vm.message = 'success'
@@ -30,8 +38,9 @@ const homeController = function ($scope, getAllLocations, getCurrentLocation) {
         }
       })
     })
-/*
 
+  // to get current location
+  vm.message1 = 'locating'
   vm.succeedToGetCurrentPosition = function (position) {
     const latitude = position.coords.latitude
     const longitude = position.coords.longitude
@@ -53,10 +62,8 @@ const homeController = function ($scope, getAllLocations, getCurrentLocation) {
       }
     )
   }
-  // to get current location
-  getCurrentLocation.getMyPosition(vm.succeedToGetCurrentPosition, vm.errorHandler, vm.notAllowedToGetPosition)
-*/
 
+  getCurrentLocation.getMyPosition(vm.succeedToGetCurrentPosition, vm.errorHandler, vm.notAllowedToGetPosition)
 
 }
 

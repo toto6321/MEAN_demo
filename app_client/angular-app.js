@@ -6,29 +6,6 @@
 
 angular.module('loc8r', ['ngRoute'])
 
-// controller myController
-/**
- *
- * @param $scope  locations array obtaining from database will be stored in $scope.data.locations
- * @param getLocations  service getLocations is to get locations from database
- * @param getCurrentLocation  service getCurrentLocation is to user's location from the browser
- */
-
-
-// directive ratingStar (rating-star)
-const ratingStar = () => {
-  return {
-    scope: {
-      thisRating: '=rating'
-    },
-    templateUrl: '/angularDirectiveHtml/ratingHtml.html'
-  }
-}
-
-
-
-
-
 // add config to angular SPA
 const config = ($routeProvider) => {
   $routeProvider
@@ -43,8 +20,3 @@ const config = ($routeProvider) => {
 angular
   .module('loc8r')
   .config(['$routeProvider', config])
-/* .controller('myController', )
- .directive('ratingStar', ratingStar)
- .service('getLocations', getLocations)
- .service('getCurrentLocation', getCurrentLocation)
-*/
