@@ -4,7 +4,6 @@
  *   @email  toto6321@qq.com
  */
 
-module.exports.index = function (req, res, next) {
-	res.render('index', {title: 'Express'});
+module.exports.index = function(req, res, next) {
+  res.render('index', {title: 'Express'});
 };
-

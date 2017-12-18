@@ -6,30 +6,34 @@
 let Request = require('request')
 const options = require('../config/config')
 
+module.exports.startAngularSPA = (req, res, next) => {
+  res.render('layout', {title: 'Loc8r'})
+}
+
 module.exports.homelist = function (request, response, next) {
-	let requestOption = {
-		url: options.url + '/locations',
-		method: 'get'
-	};
-	Request(requestOption, (err, res, body) => {
-		if (err) {
-			console.log(err)
-		} else if (res.statusCode === 200) {
-			console.log(body)
-			const data = JSON.parse(body)
-			response.render('locations-list', {
-				title: 'homelist',
-				pageHeader: {
-					title: 'Loc8r',
-					strapline: 'Find places to work with WIFI near you'
-				},
-				locations: data
-			})
-		} else {
-			console.log(res.statusCode)
-		}
-	});
-};
+  let requestOption = {
+    url: options.url + '/locations',
+    method: 'get'
+  }
+  Request(requestOption, (err, res, body) => {
+    if (err) {
+      console.log(err)
+    } else if (res.statusCode === 200) {
+      console.log(body)
+      const data = JSON.parse(body)
+      response.render('locations-list', {
+        title: 'homelist',
+        pageHeader: {
+          title: 'Loc8r',
+          strapline: 'Find places to work with WIFI near you'
+        },
+        locations: data
+      })
+    } else {
+      console.log(res.statusCode)
+    }
+  })
+}
 /*
 
 module.exports.locationInfo = (req, res, next) => {
@@ -72,24 +76,22 @@ module.exports.locationInfo = (req, res, next) => {
 */
 
 module.exports.getLocationInfo = (req, res) => {
-	res.render('location-info', {
-		title: location.name,
-		pageHeader: {
-			title: location.name
-		},
-		sidebar: {
-			context: 'is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
-			callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like you.'
-		},
-	})
+  res.render('location-info', {
+    title: location.name,
+    pageHeader: {
+      title: location.name
+    },
+    sidebar: {
+      context: 'is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
+      callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like you.'
+    }
+  })
 }
-
 
 module.exports.getAddReview = (req, res, next) => {
-	const locationId = req.params.locationId
-	res.render('location-review', {
-		title: 'addReview',
-		locationId: locationId
-	})
+  const locationId = req.params.locationId
+  res.render('location-review', {
+    title: 'addReview',
+    locationId: locationId
+  })
 }
-

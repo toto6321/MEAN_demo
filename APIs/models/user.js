@@ -6,14 +6,14 @@
  *   @exports User Model
  */
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
-	nickname: String,
-	name: String,
-	gender: Number, //0 female and 1 is male
-	email: {type: String, required: true},
-	mobile: {type: String},
-	pwd: {type: String, required: true},
-});
+  nickname: String,
+  name: String,
+  gender: Number, // 0 female and 1 is male
+  email: {type: String, required: true},
+  mobile: {type: String},
+  pwd: {type: String, required: true}
+})
 
-module.exports = mongoose.model('User', userSchema, 'users');
+module.exports = mongoose.model('User', userSchema, 'users')

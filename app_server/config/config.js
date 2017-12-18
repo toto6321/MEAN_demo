@@ -4,8 +4,8 @@
  *   @email  toto6321@qq.com
  */
 let requestOption = {
-	url: process.env.NODE_ENV === 'production' ?
-		'http://www.sweettoto.com/api' : 'http://localhost:3333/api'
+  url: process.env.NODE_ENV === 'production'
+    ? 'http://www.sweettoto.com/api' : 'http://localhost:3333/api'
 }
 
 module.exports = requestOption
