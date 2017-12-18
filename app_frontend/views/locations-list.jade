@@ -10,7 +10,7 @@ block content
         small &nbsp;#{pageHeader.strapline}
   .row(ng-controller='myController')
     .col-xs-12.col-sm-8
-      .col-xs-12.col-sm-8
+      .row
         label(for='locationFilter')
         input#locationFilter(type='text' name='locationFilter' ng-model='locationFilter')
         .message {{message}}

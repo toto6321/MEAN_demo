@@ -27,27 +27,28 @@ const myController = function ($scope, getLocations, getCurrentLocation) {
 				}
 				$scope.message = 'success'
 			}, function (err) {
-				// $scope.$apply(function () {
-				$scope.message = 'error'
-				$scope.data = {
-					location: []
-				}
-				// })
+				$scope.$apply(function () {
+					$scope.message = 'error'
+					$scope.data = {
+						location: []
+					}
+				})
 			})
 	}
 
 	$scope.errorHandler = function (error) {
-		// $scope.$apply(function (error) {
-		$scope.message = error
-		console.log('error in getting position: ', error)
-		// })
+		$scope.$apply(function (error) {
+			$scope.message = error
+			console.log('error in getting position: ', error)
+		})
 	}
 
 	$scope.notAllowedToGetPosition = function () {
-		// $scope.$apply(function () {
-		$scope.message = 'Please allow us to get the position'
-		console.log('being not allowed to get position')
-		// }
+		$scope.$apply(function () {
+				$scope.message = 'Please allow us to get the position'
+				console.log('being not allowed to get position')
+			}
+		)
 	}
 
 	getCurrentLocation.getMyPosition($scope.succeedToGetCurrentPosition, $scope.errorHandler, $scope.notAllowedToGetPosition)
@@ -69,7 +70,7 @@ const getLocations = function ($http) {
 }
 
 // service getCurrentLocation
-const getCurrentLocation = ($http) => {
+const getCurrentLocation = function () {
 	const getPosition = (success, err, notAllowedToGetPosition) => {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(success, err)
