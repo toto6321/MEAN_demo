@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Loc8r</title>
-</head>
-<body>
 <div id="banner" class="page-header">
     <div class="row">
         <div class="col-lg-6"></div>
         <h1>
-            {{ vm.pageHeader.title }}
-            <small>{{ vm.pageHeader.strapline }}</small>
+            {{ pageHeader.title }}
+            <small>{{ pageHeader.strapline }}</small>
         </h1>
     </div>
 </div>
@@ -20,7 +13,7 @@
         <div class="row">
             <label for="locationFilter">Location Filter</label>
             <input id="locationFilter" type="text" , name="locationFilter" , ng-model="locationFilter">
-            <span>{{vm.message}}</span>
+            <span class="message">{{message}}</span>
         </div>
         <div class="row list-group">
             <div class="col-xs-12 list-group-item" ng-repeat="location in vm.data.locations | filter : locationFilter">
@@ -38,7 +31,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-4">
-        <p class="lead">{{ vm.sidebar.content }}</p>
+        <p class="lead">{{ sidebar.content }}</p>
     </div>
 </div>
 
