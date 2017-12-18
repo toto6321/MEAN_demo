@@ -4,7 +4,7 @@
  *   @email  toto6321@qq.com
  */
 
-const homeController = function () {
+const homeController = function ($scope, getAllLocations, getCurrentLocation) {
   const vm = this
   vm.pageHeader = {
     title: 'Loc8r',
@@ -14,52 +14,53 @@ const homeController = function () {
     content: "Looking for wifi and a seat"
   };
 
-}
-
-angular
-  .module('loc8r')
-  .controller('homeController', homeController)
-
-
+  vm.message = 'searching'
+  // to get location list
+  getAllLocations
+    .then(function (res) {
+      vm.message = 'success'
+      vm.data = {
+        locations: res.data
+      }
+    }, function (err) {
+      vm.$apply(function () {
+        vm.message = 'error'
+        vm.data = {
+          location: []
+        }
+      })
+    })
 /*
 
-const homeController = function ($scope, getLocations, getCurrentLocation) {
-  $scope.message = 'searching'
-  $scope.succeedToGetCurrentPosition = function (position) {
+  vm.succeedToGetCurrentPosition = function (position) {
     const latitude = position.coords.latitude
     const longitude = position.coords.longitude
+    vm.message1 = "succeed to get location"
     console.log({latitude: latitude, longitude: longitude})
-    getLocations
-      .then(function (res) {
-        $scope.data = {
-          locations: res.data
-        }
-        $scope.message = 'success'
-      }, function (err) {
-        $scope.$apply(function () {
-          $scope.message = 'error'
-          $scope.data = {
-            location: []
-          }
-        })
-      })
   }
 
-  $scope.errorHandler = function (error) {
+  vm.errorHandler = function (error) {
     $scope.$apply(function (error) {
-      $scope.message = 'error'
+      vm.message1 = 'error'
       console.log('error in getting position: ', error)
     })
   }
 
-  $scope.notAllowedToGetPosition = function () {
+  vm.notAllowedToGetPosition = function () {
     $scope.$apply(function () {
-        $scope.message = 'Please allow us to get the position'
+        vm.message1 = 'Please allow us to get the position'
         console.log('being not allowed to get position')
       }
     )
   }
-
-  getCurrentLocation.getMyPosition($scope.succeedToGetCurrentPosition, $scope.errorHandler, $scope.notAllowedToGetPosition)
-}
+  // to get current location
+  getCurrentLocation.getMyPosition(vm.succeedToGetCurrentPosition, vm.errorHandler, vm.notAllowedToGetPosition)
 */
+
+
+}
+
+
+angular
+  .module('loc8r')
+  .controller('homeController', homeController)

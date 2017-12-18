@@ -13,7 +13,8 @@
         <div class="row">
             <label for="locationFilter">Location Filter</label>
             <input id="locationFilter" type="text" , name="locationFilter" , ng-model="locationFilter">
-            <span class="message">{{message}}</span>
+            <span class="message">{{vm.message}}</span>
+            <span class="message1">{{vm.message1}}</span>
         </div>
         <div class="row list-group">
             <div class="col-xs-12 list-group-item" ng-repeat="location in vm.data.locations | filter : locationFilter">

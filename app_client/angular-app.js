@@ -25,25 +25,9 @@ const ratingStar = () => {
   }
 }
 
-// service getLocations
-const getLocations = function ($http) {
-  return $http.get('http://localhost:3333/api/locations')
-}
 
-// service getCurrentLocation
-const getCurrentLocation = function () {
-  const getPosition = (success, err, notAllowedToGetPosition) => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, err)
-    } else {
-      // users don't allow the app to get location
-      notAllowedToGetPosition()
-    }
-  }
-  return {
-    getMyPosition: getPosition
-  }
-}
+
+
 
 // add config to angular SPA
 const config = ($routeProvider) => {
