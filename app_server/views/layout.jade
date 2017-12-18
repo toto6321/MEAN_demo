@@ -19,15 +19,17 @@ html(ng-app='loc8r')
             li
               a(href='/about/') About
     .container
-      block content
-      footer
-        .row
-          .col-xs-12
-            small &copy; Simon Holmes 2014
+      div(ng-view)
+        block content
+        footer
+          .row
+            .col-xs-12
+              small &copy; Simon Holmes 2014
 
     script(src='/javascripts/jquery-3.2.1.min.js')
     script(src='/bootstrap/js/bootstrap.min.js')
     script(src='/javascripts/angular.min.js')
     script(src='/javascripts/angular-route.min.js')
     script(src='/angular-app.js')
+    script(src='/home/home.controller.js')
 

@@ -4,7 +4,7 @@
  *   @email  toto6321@qq.com
  */
 
-angular.module('loc8r', [])
+angular.module('loc8r', ['ngRoute'])
 
 // controller myController
 /**
@@ -13,45 +13,7 @@ angular.module('loc8r', [])
  * @param getLocations  service getLocations is to get locations from database
  * @param getCurrentLocation  service getCurrentLocation is to user's location from the browser
  */
-const myController = function ($scope, getLocations, getCurrentLocation) {
-  $scope.message = 'searching'
-  $scope.succeedToGetCurrentPosition = function (position) {
-    const latitude = position.coords.latitude
-    const longitude = position.coords.longitude
-    console.log({latitude: latitude, longitude: longitude})
-    getLocations
-      .then(function (res) {
-        $scope.data = {
-          locations: res.data
-        }
-        $scope.message = 'success'
-      }, function (err) {
-        $scope.$apply(function () {
-          $scope.message = 'error'
-          $scope.data = {
-            location: []
-          }
-        })
-      })
-  }
 
-  $scope.errorHandler = function (error) {
-    $scope.$apply(function (error) {
-      $scope.message = 'error'
-      console.log('error in getting position: ', error)
-    })
-  }
-
-  $scope.notAllowedToGetPosition = function () {
-    $scope.$apply(function () {
-      $scope.message = 'Please allow us to get the position'
-      console.log('being not allowed to get position')
-    }
-    )
-  }
-
-  getCurrentLocation.getMyPosition($scope.succeedToGetCurrentPosition, $scope.errorHandler, $scope.notAllowedToGetPosition)
-}
 
 // directive ratingStar (rating-star)
 const ratingStar = () => {
@@ -83,9 +45,21 @@ const getCurrentLocation = function () {
   }
 }
 
+// add config to angular SPA
+const config = ($routeProvider) => {
+  $routeProvider
+    .when('/', {
+      templateUrl: '/home/home.view.html',
+      controller: homeController
+    })
+    .otherwise({redirectTo: '/'})
+}
+
 angular
   .module('loc8r')
-  .controller('myController', myController)
-  .directive('ratingStar', ratingStar)
-  .service('getLocations', getLocations)
-  .service('getCurrentLocation', getCurrentLocation)
+  .config(['$routeProvider', config])
+/* .controller('myController', )
+ .directive('ratingStar', ratingStar)
+ .service('getLocations', getLocations)
+ .service('getCurrentLocation', getCurrentLocation)
+*/
