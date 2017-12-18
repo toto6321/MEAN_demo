@@ -4,12 +4,13 @@
  *   @email  toto6321@qq.com
  */
 
-const homeController = function ($scope) {
-  $scope.pageHeader = {
+const homeController = function () {
+  const vm = this
+  vm.pageHeader = {
     title: 'Loc8r',
     strapline: 'Find places to work with wifi near you!'
   };
-  $scope.sidebar = {
+  vm.sidebar = {
     content: "Looking for wifi and a seat"
   };
 
