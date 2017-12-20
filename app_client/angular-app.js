@@ -10,8 +10,13 @@ angular.module('loc8r', ['ngRoute'])
 const config = function ($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: '/home/home.view.html',
+      templateUrl: '/views/home/home.view.html',
       controller: homeController,
+      controllerAs: 'vm'
+    })
+    .when('/about', {
+      templateUrl: '/views/about/about.view.html',
+      controller: aboutController,
       controllerAs: 'vm'
     })
     .otherwise({redirectTo: '/'})
