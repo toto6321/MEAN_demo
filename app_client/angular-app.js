@@ -17,6 +17,8 @@ const config = ($routeProvider) => {
     .otherwise({redirectTo: '/'})
 }
 
+config.$inject = ['$routeProvider']
+
 angular
   .module('loc8r')
   .config(['$routeProvider', config])

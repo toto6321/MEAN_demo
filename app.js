@@ -33,9 +33,14 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'app_client')))
 
 // set up routers
-app.use('/', index)
-app.use('/users', users)
-app.use('/api', apiRouter)
+// app.use('/', index)
+// app.use('/users', users)
+// app.use('/api', apiRouter)
+
+// set up angular route
+app.use((req, res, next) => {
+  res.send(path.join(__dirname, 'app_client', 'index.html'))
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

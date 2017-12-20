@@ -7,7 +7,7 @@
 // directive ratingStar (rating-star)
 const ratingStar = function () {
   return {
-    // restrict: 'EA', //Element and Attribute
+    restrict: 'EA', //Element and Attribute
     scope: {
       thisRating: '=rating'
     },

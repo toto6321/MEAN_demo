@@ -10,6 +10,8 @@ const getAllLocations = function ($http) {
   return $http.get('http://localhost:3333/api/locations')
 }
 
+getAllLocations.$inject = ['$http']
+
 angular
   .module('loc8r')
   .service('getAllLocations', getAllLocations)

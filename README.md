@@ -1,2 +1,2 @@
 # MEAN_demo
-a demo of MEAN project
+a demo using Mongodb, Express.js, Angular and Node.js
