@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="/bootstrap/css/amelia.bootstrap.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body ng-view>
+<body>
+<my-navigation></my-navigation>
+<div class="main" ng-view>
+
+</div>
+<my-footer></my-footer>
 
 <script src='/javascripts/jquery-3.2.1.min.js'></script>
 <script src='/javascripts/angular.min.js'></script>

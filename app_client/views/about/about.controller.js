@@ -13,7 +13,7 @@ const aboutController = function () {
   vm.pageHeader = {
     title: 'Loc8r',
     strapline: 'Find places to work with wifi near you!'
-  };
+  }
 }
 
 angular

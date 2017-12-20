@@ -20,7 +20,7 @@ const config = function ($routeProvider, $locationProvider) {
       controllerAs: 'vm'
     })
     .when('/location/:lid', {
-      templateUrl: '/common/views/genericText.view.html',
+      templateUrl: '/views/locationInfo/locationInfo.view.html',
       controller: locationInfoController,
       controllerAs: 'vm'
     })
