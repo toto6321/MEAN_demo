@@ -11,7 +11,7 @@
  * @param getLocations  service getLocations is to get locations from database
  * @param getCurrentLocation  service getCurrentLocation is to user's location from the browser
  */
-const homeController = function ($scope, getAllLocations, getCurrentLocation) {
+const homeController = function ($scope, locationApi, getCurrentLocation) {
   const vm = this
   vm.pageHeader = {
     title: 'Loc8r',
@@ -24,13 +24,16 @@ const homeController = function ($scope, getAllLocations, getCurrentLocation) {
 
   // to get location list
   vm.message = 'searching'
-  getAllLocations
+  locationApi
+    .getAllLocations()
     .then(function (res) {
       vm.message = 'success'
       vm.data = {
         locations: res.data
       }
-    }, function (err) {
+    })
+    .catch(function (err) {
+      console.log(err)
       vm.$apply(function () {
         vm.message = 'error'
         vm.data = {
@@ -66,7 +69,7 @@ const homeController = function ($scope, getAllLocations, getCurrentLocation) {
   getCurrentLocation.getMyPosition(vm.succeedToGetCurrentPosition, vm.errorHandler, vm.notAllowedToGetPosition)
 
 }
-homeController.$inject = ['$scope', 'getAllLocations', 'getCurrentLocation']
+homeController.$inject = ['$scope', 'locationApi', 'getCurrentLocation']
 
 angular
   .module('loc8r')

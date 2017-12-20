@@ -5,21 +5,23 @@
  */
 
 // controller for location-info
-const locationInfoController = function ($scope, $routeParams, getLocationInfoById) {
+const locationInfoController = function ($scope, $routeParams, locationApi) {
   const vm = this
-  vm.data = {
-    content: $routeParams.lid
-  }
+  const lid = $routeParams.lid
   vm.pageHeader = {
     title: 'Loc8r',
     strapline: 'Find places to work with wifi near you!'
   }
-  getLocationInfoById
+  locationApi
+    .getLocationById(lid)
     .then(function (res) {
+      console.log(res.data)
       vm.data = {
         location: res.data
       }
-    }, function (err) {
+    })
+    .catch(function (err) {
+      console.log(err)
       $scope.$apply(function () {
         vm.message = 'error'
         vm.data = {
@@ -29,7 +31,7 @@ const locationInfoController = function ($scope, $routeParams, getLocationInfoBy
 
     })
 }
-locationInfoController.$inject = ['$routeParams']
+locationInfoController.$inject = ['$scope', '$routeParams']
 
 angular
   .module('loc8r')
