@@ -4,7 +4,7 @@
  *   @email  toto6321@qq.com
  */
 
-angular.module('loc8r', ['ngRoute','ngSanitize'])
+angular.module('loc8r', ['ngRoute', 'ngSanitize'])
 
 // add config to angular SPA
 const config = function ($routeProvider, $locationProvider) {
@@ -19,11 +19,16 @@ const config = function ($routeProvider, $locationProvider) {
       controller: aboutController,
       controllerAs: 'vm'
     })
+    .when('/location/:lid', {
+      templateUrl: '/common/views/genericText.view.html',
+      controller: locationInfoController,
+      controllerAs: vm
+    })
     .otherwise({redirectTo: '/'})
   $locationProvider.html5Mode(true)
 }
 
-// config.$inject = ['$routeProvider']
+// config.$inject = ['$routeProvider', '$locationProvider']
 
 angular
   .module('loc8r')

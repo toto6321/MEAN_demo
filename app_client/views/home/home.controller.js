@@ -66,7 +66,7 @@ const homeController = function ($scope, getAllLocations, getCurrentLocation) {
   getCurrentLocation.getMyPosition(vm.succeedToGetCurrentPosition, vm.errorHandler, vm.notAllowedToGetPosition)
 
 }
-
+homeController.$inject = ['$scope', 'getAllLocations', 'getCurrentLocation']
 
 angular
   .module('loc8r')
