@@ -1,41 +1,33 @@
-<div id="banner" class="page-header">
+<my-navigation></my-navigation>
+<div class="container">
+    <my-page-header pageHeader="vm.pageHeader"></my-page-header>
     <div class="row">
-        <div class="col-lg-6"></div>
-        <h1>
-            {{ vm.pageHeader.title }}
-            <small>{{ vm.pageHeader.strapline }}</small>
-        </h1>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-8">
-        <div class="row">
-            <label for="locationFilter">Location Filter</label>
-            <input id="locationFilter" type="text" , name="locationFilter" , ng-model="locationFilter">
-            <span class="message">{{vm.message}}</span>
-            <span class="message1">{{vm.message1}}</span>
-        </div>
-        <div class="row list-group">
-            <div class="col-xs-12 list-group-item" ng-repeat="location in vm.data.locations | filter : locationFilter">
-                <h4>
-                    <a href="/#/location/{{ location._id }}">{{ location.name }}</a>
-                    <small class="rating-star" rating-star rating="location.rating"></small>
-                </h4>
-                <p class="address">{{ location.address }}</p>
-                <p>
+        <div class="col-xs-12 col-sm-8">
+            <div class="row">
+                <label for="locationFilter">Location Filter</label>
+                <input id="locationFilter" type="text" , name="locationFilter" , ng-model="locationFilter">
+                <span class="message">{{vm.message}}</span>
+                <span class="message1">{{vm.message1}}</span>
+            </div>
+            <div class="row list-group">
+                <div class="col-xs-12 list-group-item"
+                     ng-repeat="location in vm.data.locations | filter : locationFilter">
+                    <h4>
+                        <a href="/#/location/{{ location._id }}">{{ location.name }}</a>
+                        <small class="rating-star" rating-star rating="location.rating"></small>
+                    </h4>
+                    <p class="address">{{ location.address }}</p>
+                    <p>
                     <span class="label label-warning label-facility" ng-repeat="facility in location.facilities">
                         {{facility}}
                     </span>
-                </p>
+                    </p>
+                </div>
             </div>
         </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="lead">{{ vm.sidebar.content }}</p>
+        </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
-        <p class="lead">{{ vm.sidebar.content }}</p>
-    </div>
+    <my-footer></my-footer>
 </div>
-
-</body>
-</html>
-

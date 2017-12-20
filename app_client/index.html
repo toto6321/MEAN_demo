@@ -6,48 +6,21 @@
     <link rel="stylesheet" href="/bootstrap/css/amelia.bootstrap.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body>
-<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Loc8r</a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div id="navbar-main" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/about"> About</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="container">
-        <div ng-view>
+<body ng-view>
 
-        </div>
-        <footer>
-            <div class="row">
-                <div class="col-xs-12">
-                    <small>&copy; Simon Holmes 2014</small>
-                </div>
-            </div>
-        </footer>
+<script src='/javascripts/jquery-3.2.1.min.js'></script>
+<script src='/javascripts/angular.min.js'></script>
+<script src='/javascripts/angular-route.min.js'></script>
+<script src='/bootstrap/js/bootstrap.min.js'></script>
+<script src='/angular-app.js'></script>
+<script src='/home/home.controller.js'></script>
+<script src='/common/services/getAllLocations.service.js'></script>
+<script src='/common/services/getCurrentLocation.service.js'></script>
+<script src='/common/directives/ratingStar/ratingStar.directive.js'></script>
+<script src='/common/directives/myFooter/myFooter.directive.js'></script>
+<script src='/common/directives/myNavigation/myNavigation.directive.js'></script>
+<script src='/common/directives/myPageHeader/myPageHeader.directive.js'></script>
 
-    </div>
-
-    <script src='/javascripts/jquery-3.2.1.min.js'></script>
-    <script src='/bootstrap/js/bootstrap.min.js'></script>
-    <script src='/javascripts/angular.min.js'></script>
-    <script src='/javascripts/angular-route.min.js'></script>
-    <script src='/angular-app.js'></script>
-    <script src='/home/home.controller.js'></script>
-    <script src='/common/services/getAllLocations.service.js'></script>
-    <script src='/common/services/getCurrentLocation.service.js'></script>
-    <script src='/common/directives/ratingStar/ratingStar.directive.js'>s</script>
-</div>
 </body>
+
 </html>
