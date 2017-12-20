@@ -22,13 +22,13 @@ const config = function ($routeProvider, $locationProvider) {
     .when('/location/:lid', {
       templateUrl: '/common/views/genericText.view.html',
       controller: locationInfoController,
-      controllerAs: vm
+      controllerAs: 'vm'
     })
     .otherwise({redirectTo: '/'})
   $locationProvider.html5Mode(true)
 }
 
-// config.$inject = ['$routeProvider', '$locationProvider']
+config.$inject = ['$routeProvider', '$locationProvider']
 
 angular
   .module('loc8r')
