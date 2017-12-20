@@ -7,7 +7,7 @@
 angular.module('loc8r', ['ngRoute'])
 
 // add config to angular SPA
-const config = function($routeProvider){
+const config = function ($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
       templateUrl: '/home/home.view.html',
@@ -15,10 +15,11 @@ const config = function($routeProvider){
       controllerAs: 'vm'
     })
     .otherwise({redirectTo: '/'})
+  $locationProvider.html5Mode(true)
 }
 
 // config.$inject = ['$routeProvider']
 
 angular
   .module('loc8r')
-  .config(['$routeProvider', config])
+  .config(['$routeProvider', '$locationProvider', config])
