@@ -5,10 +5,11 @@
  */
 
 // controller for location-info
-const locationInfoController = function () {
+const locationInfoController = function ($routeParams) {
   const vm = this
-  // vm.data.content = $routeParams.lid
-  vm.data.content = 'hello'
+  vm.data = {
+    content: $routeParams.lid
+  }
   vm.pageHeader = {
     title: 'Loc8r',
     strapline: 'Find places to work with wifi near you!'
