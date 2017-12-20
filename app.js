@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'app_client')))
 // set up routers
 // app.use('/', index)
 // app.use('/users', users)
-// app.use('/api', apiRouter)
+app.use('/api', apiRouter)
 
 // set up angular route
 app.use((req, res, next) => {

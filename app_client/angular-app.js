@@ -7,7 +7,7 @@
 angular.module('loc8r', ['ngRoute'])
 
 // add config to angular SPA
-const config = ($routeProvider) => {
+const config = function($routeProvider){
   $routeProvider
     .when('/', {
       templateUrl: '/home/home.view.html',
@@ -17,7 +17,7 @@ const config = ($routeProvider) => {
     .otherwise({redirectTo: '/'})
 }
 
-config.$inject = ['$routeProvider']
+// config.$inject = ['$routeProvider']
 
 angular
   .module('loc8r')

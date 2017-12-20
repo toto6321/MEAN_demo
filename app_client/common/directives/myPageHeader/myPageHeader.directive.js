@@ -8,7 +8,7 @@
 const myPageHeader = function () {
   return {
     scope: {
-      pageHeader: '=pageHeader'
+      header: '=header'
     },
     restrict: 'EA', //Element and Attribute
     templateUrl: '/common/directives/myPageHeader/myPageHeader.template.html'
