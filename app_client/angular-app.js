@@ -4,7 +4,7 @@
  *   @email  toto6321@qq.com
  */
 
-angular.module('loc8r', ['ngRoute'])
+angular.module('loc8r', ['ngRoute','ngSanitize'])
 
 // add config to angular SPA
 const config = function ($routeProvider, $locationProvider) {

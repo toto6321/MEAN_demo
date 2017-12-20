@@ -3,9 +3,7 @@
     <my-page-header header="vm.pageHeader"></my-page-header>
     <div class="row">
         <div class="col-md-6 col-sm-12">
-            <p>
-                {{vm.data.content}}
-            </p>
+            <p ng-bind-html="vm.data.content | renderHtmlLineBreak"></p>
         </div>
     </div>
 </div>
