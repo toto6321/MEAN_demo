@@ -3,7 +3,7 @@ extends layout
 include _includes/sharedHTMLfunctions
 
 block content
-  .row.page-header: .col-lg-12
+  .row.page-header.col-lg-12
     h1= pageHeader.title
   .row
     .col-xs-12.col-md-9
@@ -25,12 +25,6 @@ block content
                       span.endedTime=time.endedTime / 60
                     else
                       span.closed close
-                //p
-                //  | #{time.days} :
-                //  if time.closed
-                //    | closed
-                //  else
-                //    | #{time.opening} - #{time.closing}
           .panel.panel-primary
             .panel-heading
               h2.panel-title Facilities
