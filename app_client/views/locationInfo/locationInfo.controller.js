@@ -5,7 +5,7 @@
  */
 
 // controller for location-info
-const locationInfoController = function ($scope, $routeParams, locationApi) {
+const locationInfoController = function ($scope, $routeParams, locationApi, reviewApi) {
   const vm = this
   const lid = $routeParams.lid
   vm.pageHeader = {
@@ -27,10 +27,20 @@ const locationInfoController = function ($scope, $routeParams, locationApi) {
           location: {}
         }
       })
-
+    })
+  reviewApi.getReviewsByLocationId(lid)
+    .then(function (res) {
+      vm.reviews = res.data
+    })
+    .catch(function (err) {
+      console.log(err)
+      $scope.$apply(function () {
+        vm.message = 'failed to get reviews'
+        vm.reviews = []
+      })
     })
 }
-locationInfoController.$inject = ['$scope', '$routeParams', 'locationApi']
+locationInfoController.$inject = ['$scope', '$routeParams', 'locationApi', 'reviewApi']
 
 angular
   .module('loc8r')

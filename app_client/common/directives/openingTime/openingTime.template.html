@@ -1,5 +1,6 @@
 <div class="day">
-    <span class="dayName">{{['Mon','Tue','Wed','Thur','Fri','Sat','Sun'][parseInt(day.dayOfWeek)]}}</span>
+    <span class="dayName">{{day.dayOfWeek|getDayName}}</span>
     <span class="startedTime">{{day.startedTime/60}}</span>
+    <span>--></span>
     <span class="endedTime">{{day.endedTime/60}}</span>
 </div>

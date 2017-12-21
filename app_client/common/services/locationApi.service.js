@@ -5,7 +5,7 @@
  */
 
 
-// service getLocations
+// service location / api about location
 const locationApi = function ($http) {
   this.getLocationById = function (lid) {
     return $http.get(`http://localhost:3333/api/locations/${lid}`)
