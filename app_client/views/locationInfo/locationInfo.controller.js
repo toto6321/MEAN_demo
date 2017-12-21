@@ -5,13 +5,19 @@
  */
 
 // controller for location-info
-const locationInfoController = function ($scope, $routeParams, locationApi, reviewApi) {
+const locationInfoController = function ($scope, $routeParams, $uibModal, locationApi, reviewApi) {
   const vm = this
   const lid = $routeParams.lid
   vm.pageHeader = {
     title: 'Loc8r',
     strapline: 'Find places to work with wifi near you!'
   }
+  // popup a form to add a review
+  vm.addReview = function () {
+    alert('add a review')
+  }
+
+  // to load location info
   locationApi.getLocationById(lid)
     .then(function (res) {
       console.log(res.data)
@@ -28,6 +34,8 @@ const locationInfoController = function ($scope, $routeParams, locationApi, revi
         }
       })
     })
+
+  // to load reviews
   reviewApi.getReviewsByLocationId(lid)
     .then(function (res) {
       vm.reviews = res.data
@@ -39,8 +47,9 @@ const locationInfoController = function ($scope, $routeParams, locationApi, revi
         vm.reviews = []
       })
     })
+
 }
-locationInfoController.$inject = ['$scope', '$routeParams', 'locationApi', 'reviewApi']
+locationInfoController.$inject = ['$scope', '$routeParams', '$uibModal', 'locationApi', 'reviewApi']
 
 angular
   .module('loc8r')
