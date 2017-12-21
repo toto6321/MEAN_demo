@@ -12,8 +12,7 @@ const locationInfoController = function ($scope, $routeParams, locationApi) {
     title: 'Loc8r',
     strapline: 'Find places to work with wifi near you!'
   }
-  locationApi
-    .getLocationById(lid)
+  locationApi.getLocationById(lid)
     .then(function (res) {
       console.log(res.data)
       vm.data = {
@@ -31,7 +30,7 @@ const locationInfoController = function ($scope, $routeParams, locationApi) {
 
     })
 }
-locationInfoController.$inject = ['$scope', '$routeParams']
+locationInfoController.$inject = ['$scope', '$routeParams', 'locationApi']
 
 angular
   .module('loc8r')

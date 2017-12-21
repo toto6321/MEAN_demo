@@ -7,16 +7,13 @@
 
 // service getLocations
 const locationApi = function ($http) {
-  const getLocationById = function (lid) {
+  this.getLocationById = function (lid) {
     return $http.get(`http://localhost:3333/api/locations/${lid}`)
   }
-  const getAllLocations = function () {
+  this.getAllLocations = function () {
     return $http.get('http://localhost:3333/api/locations')
   }
-  return {
-    getLocationById: getLocationById,
-    getAllLocations: getAllLocations
-  }
+
 }
 locationApi.$inject = ['$http']
 
